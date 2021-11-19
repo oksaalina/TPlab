@@ -1,12 +1,12 @@
 //
-//  kepeer.hpp
+//  keeper.hpp
 //  tp
 //
 //  Created by Алина Кузнецова on 13.11.2021.
 //
 
-#ifndef kepeer_hpp
-#define kepeer_hpp
+#ifndef keeper_hpp
+#define keeper_hpp
 #include "car.hpp"
 #include "train.hpp"
 #include "plane.hpp"
