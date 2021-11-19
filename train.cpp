@@ -3,17 +3,17 @@
 //  tp
 //
 //  Created by Алина Кузнецова on 13.11.2021.
-// string nameTrain;
+//
 //
 
 #include "train.hpp"
 
 Train::Train() {
-    nameTrain = "Full name not found";
-    yearTrain = "Position not found";
-    route = "не найден";
-    number = "Address not found";
-    valumeTrain = "Phone not found";
+    nameTrain = "Наименование не найдено";
+    yearTrain = "Год выпуска не найден";
+    route = "Маршрут не найден";
+    number = "Количество вагонов не найдено";
+    valumeTrain = "Объем перевозимого груза не найден";
     cout << "[Был запущен конструктор Train]" << endl;
     cout << endl;
 }
@@ -45,7 +45,7 @@ Train::~Train() {
     number = "";
     valumeTrain = "";
     cout << "[Был запущен деструктор Train]" << endl;
-    cout << std::endl;
+    cout << endl;
 }
 
 void Train::setNameTrain(string _name) {
@@ -138,8 +138,6 @@ void Train::editInfoObject(int id) {
             }
             break;
         default:
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Ошибка!" << endl;
             cout << endl;
             break;
@@ -199,7 +197,6 @@ void Train::saveInfoObject() {
         if (!fileOut.is_open()) {
            cout << endl;
             throw "Ошибка открытия файла";
-           // cout << endl;
         }
         else {
             fileOut << "Train" << endl << "name:" << nameTrain << endl << "year:"  << yearTrain << endl << "route:" << route << endl << "number:"  << number << endl << "valume:" << valumeTrain << endl << endl;

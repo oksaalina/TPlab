@@ -35,7 +35,7 @@ Keeper::~Keeper() {
         head->data->~Carrier();
         delete(head);
     }
-    cout << "[Был запущен деструктор Keeper]" << endl;
+    cout << "[Был запущен деструктор Keeper]" << std::endl;
     cout << endl;
 }
 
@@ -138,7 +138,7 @@ void Keeper::loadObject() {
                                             mark = item;
                                         }
                                     } else {
-                                        cout << "Вы ввели цифру, когда нужно ввести строку" << endl;
+                                        cout << "You input string-line when is number. Value is default" << endl;
                                     }
                                 }
                                 if (item[0] == 'm' && item[1] == 'o' && item[2] == 'd' && item[3] == 'e' && item[4] == 'l' && item[5] == ':') {
@@ -158,7 +158,7 @@ void Keeper::loadObject() {
                                            yearCar = item;
                                         }
                                     } else {
-                                        cout << "Вы ввели строку, когда нужно ввести цифру" << endl;
+                                        cout << "You input string-line when is char. Value is default" << endl;
                                     }
                                 }
                                 if (item[0] == 'v' && item[1] == 'a' && item[2] == 'l' && item[3] == 'u' && item[4] == 'm' && item[5] == 'e' && item[6] == ':') {
@@ -170,24 +170,32 @@ void Keeper::loadObject() {
                                             valumeCar = item;
                                         }
                                     } else {
-                                        cout << "Вы ввели строку, когда нужно ввести цифру" << endl;
+                                        cout << "You input string-line when is char. Value is default" << endl;
                                     }
                                 }
                                 if (item[0] == 'c' && item[1] == 'i' && item[2] == 't' && item[3] == 'y' && item[4] == 'e' && item[5] == 's' && item[6] == ':') {
                                     item = item.substr(7);
+                                    if (carrier->charInNumbers(item)) {
                                         if (item == "") {
                                           cityes = "Нет городов";
                                         } else {
                                             cityes = item;
                                         }
+                                    } else {
+                                        cout << "You input string-line when is char. Value is default" << endl;
+                                    }
                                 }
                                 if (item[0] == 't' && item[1] == 'i' && item[2] == 'm' && item[3] == 'e' && item[4] == 's' && item[5] == ':') {
                                     item = item.substr(6);
+                                    if (carrier->charInNumbers(item)) {
                                         if (item == "") {
                                             times = "Нет часов доставки";
                                         } else {
                                             times = item;
                                         }
+                                    } else {
+                                        cout << "You input string-line when is char. Value is default" << endl;
+                                    }
                                 }
                                 if (item == "Car" || item == "Train" || item == "Plane" || fileIn.eof()) {
                                     Car* car;
@@ -207,7 +215,7 @@ void Keeper::loadObject() {
                             string number = "Число вагонов не найдено";
                             string valumeTrain = "Объем груза не найден";
                             do {
-                                getline(fileIn, item);
+                                std::getline(fileIn, item);
                                 if (item[0] == 'n' && item[1] == 'a' && item[2] == 'm' && item[3] == 'e' && item[4] == ':') {
                                     item = item.substr(5);
                                     if (!carrier->numbersInStr(item)) {
@@ -217,7 +225,7 @@ void Keeper::loadObject() {
                                             nameTrain = item;
                                         }
                                     } else {
-                                        cout << "Вы ввели цифру, когда нужно ввести строку" << endl;
+                                        cout << "You input string-line when is number. Value is default" << std::endl;
                                     }
                                 }
                                 if (item[0] == 'y' && item[1] == 'e' && item[2] == 'a' && item[3] == 'r' && item[4] == ':') {
@@ -229,7 +237,7 @@ void Keeper::loadObject() {
                                             yearTrain = item;
                                         }
                                     } else {
-                                        cout << "Вы ввели строку, когда нужно ввести цифру" << endl;
+                                        cout << "You input string-line when is number. Value is default" << std::endl;
                                     }
                                 }
                                 if (item[0] == 'r' && item[1] == 'o' && item[2] == 'u' && item[3] == 't' && item[4] == 'e' && item[5] == ':') {
@@ -241,7 +249,7 @@ void Keeper::loadObject() {
                                             route = item;
                                         }
                                     } else {
-                                        cout << "Вы ввели цифру, когда нужно ввести строку" << endl;
+                                        cout << "You input string-line when is char. Value is default" << std::endl;
                                     }
                                 }
                                 if (item[0] == 'n' && item[1] == 'u' && item[2] == 'm' && item[3] == 'b' && item[4] == 'e' && item[5] == 'r' && item[6] == ':') {
@@ -253,7 +261,7 @@ void Keeper::loadObject() {
                                         number = item;
                                     }
                                     } else {
-                                       cout << "Вы ввели строку, когда нужно ввести цифру" << endl;
+                                       cout << "You input string-line when is number. Value is default" << std::endl;
                                    }
                                 }
                                 if (item[0] == 'v' && item[1] == 'a' && item[2] == 'l' && item[3] == 'u' && item[4] == 'm' && item[5] == 'e' && item[6] == ':') {
@@ -265,7 +273,7 @@ void Keeper::loadObject() {
                                             valumeTrain = item;
                                         }
                                     } else {
-                                        cout << "Вы ввели строку, когда нужно ввести цифру" << endl;
+                                        cout << "You input string-line when is char. Value is default" << endl;
                                     }
                                 }
                                 if (item == "Car" || item == "Train" || item == "Plane" || fileIn.eof()) {
@@ -306,14 +314,14 @@ void Keeper::loadObject() {
                                 }
                                 if (item[0] == 'v' && item[1] == 'a' && item[2] == 'l' && item[3] == 'u' && item[4] == 'm' && item[5] == 'e' && item[6] == ':') {
                                     item = item.substr(7);
-                                    if (carrier->charInNumbers(item)) {
+                                    if (!carrier->charInNumbers(item)) {
                                     if (item == "") {
                                         valumePlane = "Нет объема груза";
                                     } else {
                                         valumePlane = item;
                                     }
                                     } else {
-                                        cout << "Вы ввели строку, когда нужно ввести цифру" << endl;
+                                        cout << "You input string-line when is number. Value is default" << endl;
                                     }
                                 }
                                 if (item[0] == 't' && item[1] == 'o' && item[2] == 'w' && item[3] == 'n' && item[4] == 's' && item[5] == ':') {
@@ -325,43 +333,43 @@ void Keeper::loadObject() {
                                             townsPlane = item;
                                         }
                                     } else {
-                                        cout << "Вы ввели цифру, когда нужно ввести строку" << endl;
+                                        cout << "You input string-line when is char. Value is default" << endl;
                                     }
                                 }
                                 if (item[0] == 'w' && item[1] == 'i' && item[2] == 'd' && item[3] == 't' && item[4] == 'h' && item[5] == ':') {
                                     item = item.substr(6);
-                                    if (carrier->charInNumbers(item)) {
+                                    if (!carrier->charInNumbers(item)) {
                                         if (item == "") {
                                             width = "Нет ширины";
                                         } else {
                                             width = item;
                                         }
                                     } else {
-                                        cout << "Вы ввели строку, когда нужно ввести цифру" << endl;
+                                        std::cout << "You input string-line when is char. Value is default" << endl;
                                     }
                                 }
                                 if (item[0] == 'h' && item[1] == 'e' && item[2] == 'i' && item[3] == 'g' && item[4] == 'h' && item[5] == 't' && item[6] == ':') {
                                     item = item.substr(7);
-                                    if (carrier->charInNumbers(item)) {
+                                    if (!carrier->charInNumbers(item)) {
                                         if (item == "") {
                                             height = "Нет высоты";
                                         } else {
                                             height = item;
                                         }
                                     } else {
-                                        cout << "Вы ввели строку, когда нужно ввести цифру" << endl;
+                                        std::cout << "You input string-line when is char. Value is default" << endl;
                                     }
                                 }
                                 if (item[0] == 'l' && item[1] == 'e' && item[2] == 'n' && item[3] == 'g' && item[4] == 't' && item[5] == 'h' && item[6] == ':') {
                                     item = item.substr(7);
-                                    if (carrier->charInNumbers(item)) {
+                                    if (!carrier->charInNumbers(item)) {
                                         if (item == "") {
                                             length = "Нет длины";
                                         } else {
                                             length = item;
                                         }
                                     } else {
-                                        cout << "Вы ввели строку, когда нужно ввести цифру" << endl;
+                                        cout << "You input string-line when is char. Value is default" << endl;
                                     }
                                 }
                                 if (item == "Car" || item == "Train" || item == "Plane" || fileIn.eof()) {
@@ -379,11 +387,12 @@ void Keeper::loadObject() {
             }
         }
         if (fileIn.eof() && (item == "Car" || item == "Train" || item == "Plane")) {
-            cout << "Сначала добавьте объект!" << endl;
+            cout << "It is impossible to create an object at the end of the file without defining parameters." << endl;
+            cout << "Fill in the file normally" << endl;
             cout << endl;
         }
         if (!found) {
-            cout << "Пусто!" << endl;
+            cout << "Impossible to define" << endl;
             cout << endl;
         }
         fileIn.close();
@@ -398,15 +407,16 @@ void Keeper::popObject(int index) {
     Element* buf = head;
     Element* bufOne;
     if (_size == 0) {
-        cout << "Пусто!" << endl;
+        cout << "Is empty" << endl;
         return;
     }
     if (((index) >= _size) || (index < 0)) {
-        cout << "Индекс не найден" << endl;
+        cout << "Not found index" << endl;
     }
 
     else {
         if (buf->nextElement == nullptr) {
+            cout << "Delete last object and one in all"<< endl;
             buf->data->~Carrier();
             _size--;
             return;
@@ -430,7 +440,7 @@ void Keeper::popObject(int index) {
 Carrier* Keeper::operator[] (const int index) {
     Element* buf = head;
     if (((index) >= _size) || (index < 0)) {
-        cout << "Ошибка!" << endl;
+        cout << "Error" << endl;
     }
     else {
         for (int i = 0; i < index; i++) {

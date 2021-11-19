@@ -7,7 +7,7 @@
 
 
 #include <iostream>
-#include "kepeer.hpp"
+#include "keeper.hpp"
 #include "carrier.hpp"
 #include "plane.hpp"
 #include "train.hpp"
@@ -37,7 +37,7 @@ int main() {
         cout << "Ваш выбор: ";
         if ((cin >> variant)) {
             switch (variant) {
-                case 1: //add
+                case 1:
                     cout << "1. Самолет" << endl;
                     cout << "2. Поезд" << endl;
                     cout << "3. Автомобиль" << endl;
@@ -91,7 +91,6 @@ int main() {
                         }
                         cout << "Введите номер объекта: ";
                         if ((cin >> id)) {
-                           // id = id + 1;
                             if (id < 0 || id > (keep.getSize() - 1)) {
                                 cout << "Ошибка ввода, попробуйте еще раз" << endl;
                                 cout << endl;
@@ -145,7 +144,6 @@ int main() {
                     break;
                 case 4:
                     keep.loadObject();
-                    //cout << "Сохранено" << endl;
                     break;
                 case 5:
                     
@@ -165,7 +163,7 @@ int main() {
                         cout << endl;
                     } else {
                         keep.saveObject();
-                        cout << "Сохранено" << endl;
+                        cout << "Сохранено!" << endl;
                         cout << endl;
                     }
                     break;
@@ -181,15 +179,10 @@ int main() {
             }
         } else {
             cin.clear();
-            cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << endl;
             cout << "Ошибка ввода, попробуйте еще раз" << endl;
             cout << endl;
         }
     } while (!exit);
 }
-
-        
-        
-
-

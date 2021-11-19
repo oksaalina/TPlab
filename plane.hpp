@@ -8,12 +8,7 @@
 
 #ifndef plane_hpp
 #define plane_hpp
-
-#include <stdio.h>
 #include "carrier.hpp"
-
-using namespace std;
-
 
 class Plane : public Carrier {
 private:
@@ -27,7 +22,7 @@ private:
 
 public:
     Plane();
-    Plane(string _type, string _namePlane, string _valumePlane, string _width, string _height, string _length, string _towns);
+    Plane(string _type, string _namePlane, string _valumePlane, string _towns, string _width, string _height, string _length);
     Plane(Plane& obj);
     ~Plane() override;
     

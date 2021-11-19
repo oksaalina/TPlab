@@ -7,7 +7,6 @@
 
 #ifndef carrier_hpp
 #define carrier_hpp
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -19,8 +18,8 @@ public:
     
     Carrier();
     virtual ~Carrier();
-    bool numbersInStr(std::string str);
-    bool charInNumbers(std::string str);
+    bool numbersInStr(string str);
+    bool charInNumbers(string str);
     virtual void setInfoObject() = 0;
     virtual void editInfoObject(int id) = 0;
     virtual void showInfoObject() = 0;

@@ -12,8 +12,6 @@
 
 #include "plane.hpp"
 
-using namespace std;
-
 Plane::Plane() {
     type = "Тип не найден";
     namePlane = "Наименование самолета не найдено";
@@ -26,7 +24,7 @@ Plane::Plane() {
     cout << endl;
 }
 
-Plane::Plane(string _type, string _namePlane, string _valumePlane, string _width, string _height, string _length, string _towns) {
+Plane::Plane(string _type, string _namePlane, string _valumePlane, string _towns, string _width, string _height, string _length) {
     type = _type;
     namePlane = _namePlane;
     valumePlane = _valumePlane;
@@ -58,7 +56,7 @@ Plane::~Plane() {
     width = "";
     height = "";
     length = "";
-    cout << "[Был запущен деструктор Keeper]" << endl;
+    cout << "[Был запущен деструктор Plane]" << endl;
     cout << endl;
 }
 
@@ -143,7 +141,7 @@ void Plane::editInfoObject(int id) {
         case 3:
             cout << "Ввдеите новый объем перевозмого груза: ";
             getline(cin, str);
-            if (numbersInStr(str)) {
+            if (charInNumbers(str)) {
                 valumePlane = str;
             } else {
                 cout << "Вы ввели строку, а не число, данные не были введены" << endl;
@@ -186,8 +184,6 @@ void Plane::editInfoObject(int id) {
             }
             break;
         default:
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Ошибка!" << endl;
             cout << endl;
             break;
@@ -205,7 +201,7 @@ void Plane::setInfoObject() {
     namePlane = str;
     cout << "Введите объем перевозимого груза самолета: ";
     getline(cin, str);
-    if (numbersInStr(str)) {
+    if (charInNumbers(str)) {
         valumePlane = str;
     } else {
         cout << "Вы ввели буквы, а не число, данные не были введены" << endl;
@@ -219,21 +215,21 @@ void Plane::setInfoObject() {
     }
     cout << "Введите ширину самолета: ";
     getline(cin, str);
-    if (numbersInStr(str)) {
+    if (charInNumbers(str)) {
         width = str;
     } else {
         cout << "Вы ввели буквы, а не число, данные не были введены" << endl;
     }
     cout << "Введите высоту самолета: ";
     getline(cin, str);
-    if (numbersInStr(str)) {
+    if (charInNumbers(str)) {
         height = str;
     } else {
         cout << "Вы ввели буквы, а не число, данные не были введены" << endl;
     }
     cout << "Введите длину самолета: ";
     getline(cin, str);
-    if (numbersInStr(str)) {
+    if (charInNumbers(str)) {
             length = str;
     } else {
         cout << "Вы ввели буквы, а не число, данные не были введены" << endl;
@@ -259,7 +255,6 @@ void Plane::saveInfoObject() {
         if (!fileOut.is_open()) {
            cout << endl;
             throw "Ошибка открытия файла";
-           // cout << endl;
         }
         else {
             fileOut << "Plane" << endl << "type:" << type << endl << "name:"  << namePlane << endl << "valume:"  << valumePlane << endl

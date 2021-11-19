@@ -7,6 +7,9 @@
 
 #ifndef kepeer_hpp
 #define kepeer_hpp
+
+#include <stdio.h>
+
 #include "car.hpp"
 #include "train.hpp"
 #include "plane.hpp"
@@ -26,6 +29,7 @@ public:
     void popObject(int index);
     void loadObject();
     int getSize();
+
     Carrier* operator[] (int index);
 };
 

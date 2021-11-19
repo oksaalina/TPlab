@@ -9,7 +9,7 @@
 
 Carrier::Carrier() {
     cout << "[Был запущен конструктор Carrier]" << endl;
-    cout << std::endl;
+    cout << endl;
 }
 
 Carrier::~Carrier() {
@@ -29,9 +29,9 @@ bool Carrier::numbersInStr(string str) {
         i++;
     }
     if (found == 0) {
-        return false;
-    } else {
         return true;
+    } else {
+        return false;
     }
 }
 

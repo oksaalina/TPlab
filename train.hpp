@@ -10,8 +10,6 @@
 #define train_hpp
 #include "carrier.hpp"
 
-using namespace std;
-
 class Train : public Carrier {
 private:
     string nameTrain;

@@ -14,17 +14,21 @@ Car::Car() {
     model = "Модель не найдена";
     yearCar = "Год не найден";
     valumeCar = "Объем груза не найден";
+    city.name = "Города не найдены";
+    city.time = "Время не найдено";
     cout << "[Был запущен конструктор Car]" << endl;
     cout << endl;
 }
 
-Car::Car(string _mark, string _model, string _yearCar, string _valumeCar) {
+Car::Car(string _mark, string _model, string _yearCar, string _valumeCar, string _cityes, string _times) {
     mark = _mark;
     model = _model;
     yearCar = _yearCar;
     valumeCar = _valumeCar;
+    city.name = _cityes;
+    city.time = _times;
     cout << "[Был запущен конструктор Car(с параметром)]" << endl;
-    cout << std::endl;
+    cout << endl;
 }
 
 Car::Car(Car &obj) {
@@ -32,6 +36,8 @@ Car::Car(Car &obj) {
     model = obj.model;
     yearCar = obj.yearCar;
     valumeCar = obj.valumeCar;
+    city.name = obj.city.name;
+    city.time = obj.city.time;
     cout << "[Был запущен конструктор копирования Car]" << endl;
     cout << endl;
 }
@@ -41,8 +47,10 @@ Car::~Car() {
     model = "";
     yearCar = "";
     valumeCar = "";
+    city.name = "";
+    city.time = "";
     cout << "[Был запущен деструктор Car]" << endl;
-    cout << std::endl;
+    cout << endl;
 }
 
 void Car::setMark(string _mark) {
@@ -61,6 +69,13 @@ void Car::setValumeCar(string _valume) {
     valumeCar = _valume;
 }
 
+void Car::setCityName(string _name) {
+    city.name = _name;
+}
+void Car::setCityTime(string _time){
+    city.time = _time;
+}
+
 string Car::getMark() {
     return mark;
 }
@@ -75,6 +90,13 @@ string Car::getYearCar() {
 
 string Car::getValumeCar() {
     return valumeCar;
+}
+
+string Car::getCityName() {
+    return city.name;
+}
+string Car::getCityTime() {
+    return city.time;
 }
 
 void Car::editInfoObject(int id) {
@@ -113,9 +135,25 @@ void Car::editInfoObject(int id) {
                cout << "Введите число, а не строку" << endl;
             }
             break;
+        case 5:
+            cout << "Введите новый город для доставки автомобиля: ";
+            cin >> str;
+            if (!numbersInStr(str)) {
+                city.name = str;
+            } else {
+               cout << "Введите строку, а не число" << endl;
+            }
+            break;
+        case 6:
+            cout << "Введите новое количество часов для доставки автомобиля: ";
+            cin >> str;
+            if (charInNumbers(str)) {
+                city.time = str;
+            } else {
+               cout << "Введите число, а не строку" << endl;
+            }
+            break;
         default:
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Ошибка" << endl;
             cout << endl;
             break;
@@ -145,7 +183,39 @@ void Car::setInfoObject() {
     cout << "Введите объем перевозимого груза автомобиля: ";
     getline(cin, str);
     if (charInNumbers(str)) {
-        yearCar = str;
+        valumeCar = str;
+    } else {
+       cout << "Вы ввели букву, а не число, данные не были введены" << endl;
+    }
+    cout << "В какое количество городов осуществляется доставка: ";
+    int num = 0;
+    cin >> num;
+    if (num >= 0 && num <= 9) {
+        cin.ignore(32767, '\n');
+        city.name = "";
+        city.time = "";
+        string space = " ";
+        string number = "№";
+        string index;
+        for (int i = 0; i < num; i++) {
+            cout << "Введите название города №" << i << ": ";
+            getline(cin, str);
+            index = to_string(i);
+            if (!numbersInStr(str)) {
+                city.name.append(number + index + space + str + space);
+                
+            } else {
+                cout << "Вы ввели цифру, данные не были введены" << endl;
+            }
+            cout << "Введите количетсво часов доставки для города №" << i << ": ";
+            getline(cin, str);
+            if (charInNumbers(str)) {
+                city.time.append(number + index + space + str + space);
+                
+            } else {
+                cout << "Вы ввели цифру, данные не были введены" << endl;
+            }
+        }
     } else {
        cout << "Вы ввели букву, а не число, данные не были введены" << endl;
     }
@@ -157,6 +227,8 @@ void Car::showInfoObject() {
     cout << "2. Модель автомобиля: " << model << endl;
     cout << "3. Год выпуска автомобиля: " << yearCar << endl;
     cout << "4. Объем перевозимого груза автомобиля: " << valumeCar << endl;
+    cout << "5. Города для доставки автомобиля: " << city.name << endl;
+    cout << "6. Количетсво часов для доставки автомобиля: " << city.time << endl;
     cout << endl;
 }
 
@@ -165,12 +237,11 @@ void Car::saveInfoObject() {
     fileOut.open("carrier.txt", ios_base::app);
     try {
         if (!fileOut.is_open()) {
-           cout << endl;
+            cout << endl;
             throw "Ошибка открытия файла";
-           // std::cout << std::endl;
         }
         else {
-            fileOut << "Car" << endl << "mark:"  << mark << endl << "model:" << model << endl << "year:" << yearCar << endl << "valume:"  << valumeCar << endl << endl;
+            fileOut << "Car" << endl << "mark:"  << mark << endl << "model:" << model << endl << "year:" << yearCar << endl << "valume:" << valumeCar << endl << "cityes:" << city.name << endl << "times:" << city.time << endl << endl;
             fileOut.close();
         }
     }
